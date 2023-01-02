@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Encuestas</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'encuestas/style.css' %}">
+    
+</head>
+<body>
+    <h1>{{ pregunta.textoPregunta }}</h1>
+
+    <ul>
+    {% for eleccion in eleccion.eleccion_set.all %}
+        <li>{{ eleccion.textoEleccion }} -- {{ eleccion.votos }} Votar{{ eleccion.votos|pluralize }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'encuestas:detalles' pregunta.id %}">Votar de nuevo</a>
+</body>
+</html>

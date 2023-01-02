@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Pregunta</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'encuestas/style.css' %}">
+    
+</head>
+<body>
+    <h1>{{ pregunta.textoPregunta }}</h1>
+    <ul>
+        {% for eleccion in pregunta.eleccion_set.all %}
+        <li>{{ eleccion.textoEleccion }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'encuestas:votar' pregunta.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>{{ pregunta.textoPregunta }}</h1></legend>
+            {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            {% for eleccion in pregunta.eleccion_set.all %}
+                <input type="radio" name="eleccion" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id }}">
+                <label for="eleccion{{ forloop.counter }}">{{ eleccion.textoEleccion }}</label><br>
+            {% endfor %}
+        </fieldset>
+        <input type="submit" value="Vote"> 
+    </form>
+</body>
+</html>

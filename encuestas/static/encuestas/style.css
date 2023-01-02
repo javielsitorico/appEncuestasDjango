@@ -1,0 +1,5 @@
+/* Para añadir imagenes desde el css a Django, hay que usar rutas relativas */
+
+li a {
+    color: green;
+}

@@ -11,17 +11,30 @@
 
 </head>
 <body>
-    {% if listaPreguntasRecientes %}
-    <ul>
-        {% for pregunta in listaPreguntasRecientes %}
-        <!-- Este enlace esta 'hardcoded', es mejor ponerlo de la manera en la que django
-             nos permite modificar la url desde urls.py y que se guarde el cambio aqui -->
-        {% comment %} <li><a href="/encuestas/{{ pregunta.id }}/"> {{ pregunta.textoPregunta }} </a></li> {% endcomment %}
-        <li><a href="{% url 'encuestas:detalles' pregunta.id %}">{{ pregunta.textoPregunta }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>Todavía no hay encuestas</p>
-    {% endif %}
+
+    <header>
+        <h1 class="titulo-cabecera">Your_Polls</h1>
+        <nav>
+            <a href="{% url 'encuestas:index' %}">Inicio</a>
+            <a href="{% url 'admin:index' %}">Panel de Administrador</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="titulo">Encuestas Recientes</h1>
+        {% if listaPreguntasRecientes %}
+        <ul class="lista-preguntas-recientes">
+            {% for pregunta in listaPreguntasRecientes %}
+            {% comment %} Este enlace esta 'hardcoded', es mejor ponerlo de la manera en la que django
+            nos permite modificar la url desde urls.py y que se guarde el cambio aqui {% endcomment %}
+            {% comment %} <li><a href="/encuestas/{{ pregunta.id }}/"> {{ pregunta.textoPregunta }} </a></li> {% endcomment %}
+            <li class="pregunta-reciente"><a href="{% url 'encuestas:detalles' pregunta.id %}">{{ pregunta.textoPregunta }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Todavía no hay encuestas</p>
+        {% endif %}
+    </main>
+
 </body>
 </html>

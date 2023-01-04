@@ -11,25 +11,38 @@
     
 </head>
 <body>
-    <h1>{{ pregunta.textoPregunta }}</h1>
-    <ul>
-        {% for eleccion in pregunta.eleccion_set.all %}
-        <li>{{ eleccion.textoEleccion }}</li>
-        {% endfor %}
-    </ul>
-    <form action="{% url 'encuestas:votar' pregunta.id %}" method="post">
-        {% csrf_token %}
-        <fieldset>
-            <legend><h1>{{ pregunta.textoPregunta }}</h1></legend>
-            {% if error_message %}
-            <p><strong>{{ error_message }}</strong></p>
-            {% endif %}
+
+    <main>
+        <h1 class="titulo">{{ pregunta.textoPregunta }}</h1>
+        {% comment %} <ul>
             {% for eleccion in pregunta.eleccion_set.all %}
-                <input type="radio" name="eleccion" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id }}">
-                <label for="eleccion{{ forloop.counter }}">{{ eleccion.textoEleccion }}</label><br>
+            <li>{{ eleccion.textoEleccion }}</li>
             {% endfor %}
-        </fieldset>
-        <input type="submit" value="Vote"> 
-    </form>
+        </ul> {% endcomment %}
+        {% if pregunta.eleccion_set.all %}
+        <form action="{% url 'encuestas:votar' pregunta.id %}" method="post">
+            {% csrf_token %}
+
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+        
+            <div class="formulario">
+            {% for eleccion in pregunta.eleccion_set.all %}
+                <div class="eleccion">
+                    <input type="radio" name="eleccion" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id }}">
+                    <label for="eleccion{{ forloop.counter }}">{{ eleccion.textoEleccion }}</label>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Vote"> 
+            </div>
+
+        </form>
+        {% else %}
+        <p>Todavía no hay opciones para esta pregunta</p>
+        {% endif%}
+        {% comment %} <a href="{% url 'encuestas:responder' pregunta.id %}">Añadir respuesta</a> {% endcomment %}
+    </main>
+    
 </body>
 </html>

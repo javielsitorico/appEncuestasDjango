@@ -1,5 +1,114 @@
 /* Para añadir imagenes desde el css a Django, hay que usar rutas relativas */
 
-li a {
-    color: green;
+
+
+/* Globales */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
+
+:root {
+    --negro: #252525;
+    --fondo-oscuro: #326789;
+    --fondo-claro: #78A6C8;
+    --principal: #FBFBFB;
+    --secundario: #E65C4F;
 }
+
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: var(--principal);
+    margin: 0;
+    color: var(--negro);
+}
+
+a {
+    text-decoration: none;
+    transition: text-shadow .3s ease;
+    color: var(--negro);
+}
+
+p, h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--fondo-oscuro);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+header * {
+    color: var(--principal);
+}
+
+.titulo-cabecera {
+    background-color: var(--secundario);
+    font-weight: 800;
+    font-size: 36px;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    transform: rotate(5deg);
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+header nav a {
+    font-size: 18px;
+}
+
+main {
+    margin: 30px;
+}
+
+.titulo {
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Index */
+
+.lista-preguntas-recientes {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.pregunta-reciente {
+    font-size: 20px;
+    list-style-type: none;
+    padding: 0;
+    padding: 10px 0 10px 0;
+}
+
+.pregunta-reciente+.pregunta-reciente {
+    border-top: 1px solid rgba(0, 0, 0, 0.3)
+}
+
+.pregunta-reciente a:hover {
+    color: var(--secundario);
+}
+
+/* Detalles */
+
+.formulario {
+    
+}
+
+.eleccion {
+
+}
+
+/* Resultados */
+

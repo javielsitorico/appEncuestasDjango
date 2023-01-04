@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:pk>/', views.DetallesView.as_view(), name='detalles'),
     path('<int:pk>/resultados', views.ResultadosView.as_view(), name='resultados'),
     path('<int:idPregunta>/votar', views.votar, name='votar'),
+    # path('<int:idPregunta>/responder', views.responder, name='responder'),
 ]

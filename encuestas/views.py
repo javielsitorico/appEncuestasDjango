@@ -90,3 +90,6 @@ def votar(request, idPregunta):
         opcionElegida.save()
         # Hay que devolver la respuesta una vez se han tratado correctamente los datos POST
         return HttpResponseRedirect(reverse('encuestas:resultados', args=(pregunta.id,)))
+
+# def responder(request, idPregunta):
+#     return

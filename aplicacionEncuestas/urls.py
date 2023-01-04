@@ -19,6 +19,6 @@ from django.urls import include, path
 # path devuelve un elemento con el que coincide el string de la URL que le pasamos
 
 urlpatterns = [
-    path('encuestas/', include('encuestas.urls')),
+    path('', include('encuestas.urls')),
     path('admin/', admin.site.urls),
 ]

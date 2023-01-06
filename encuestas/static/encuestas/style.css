@@ -11,6 +11,7 @@
     --fondo-claro: #78A6C8;
     --principal: #FBFBFB;
     --secundario: #E65C4F;
+    --secundario-oscuro: #b84a40;
 }
 
 *{
@@ -103,11 +104,28 @@ main {
 /* Detalles */
 
 .formulario {
-    
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.eleccion {
+.formulario input[type=submit] {
+    padding: 10px;
+    background-color: var(--secundario);
+    color: var(--principal);
+    font-size: 26px;
+    border: none;
+    font-weight: 800;
+}
 
+.formulario input[type=submit]:hover {
+    cursor: pointer;
+    background-color: var(--secundario-oscuro);
 }
 
 /* Resultados */

@@ -11,10 +11,17 @@
     
 </head>
 <body>
+    <header>
+        <h1 class="titulo-cabecera">Your_Polls</h1>
+        <nav>
+            <a href="{% url 'encuestas:index' %}">Inicio</a>
+            <a href="{% url 'admin:index' %}">Panel de Administrador</a>
+        </nav>
+    </header>
 
     <main>
         <h1 class="titulo">{{ pregunta.textoPregunta }}</h1>
-
+        
         <ul>
         {% for eleccion in pregunta.eleccion_set.all %}
             <li>{{ eleccion.textoEleccion }}: {{ eleccion.votos }} Voto{{ eleccion.votos|pluralize }}</li>

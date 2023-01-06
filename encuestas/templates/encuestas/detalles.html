@@ -12,6 +12,14 @@
 </head>
 <body>
 
+    <header>
+        <h1 class="titulo-cabecera">Your_Polls</h1>
+        <nav>
+            <a href="{% url 'encuestas:index' %}">Inicio</a>
+            <a href="{% url 'admin:index' %}">Panel de Administrador</a>
+        </nav>
+    </header>
+
     <main>
         <h1 class="titulo">{{ pregunta.textoPregunta }}</h1>
         {% comment %} <ul>
@@ -28,13 +36,13 @@
             {% endif %}
         
             <div class="formulario">
-            {% for eleccion in pregunta.eleccion_set.all %}
-                <div class="eleccion">
-                    <input type="radio" name="eleccion" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id }}">
-                    <label for="eleccion{{ forloop.counter }}">{{ eleccion.textoEleccion }}</label>
-                </div>
-            {% endfor %}
-            <input type="submit" value="Vote"> 
+                {% for eleccion in pregunta.eleccion_set.all %}
+                    <div class="eleccion">
+                        <input type="radio" name="eleccion" id="eleccion{{ forloop.counter }}" value="{{ eleccion.id }}">
+                        <label for="eleccion{{ forloop.counter }}">{{ eleccion.textoEleccion }}</label>
+                    </div>
+                {% endfor %}
+                <input type="submit" value="Votar"> 
             </div>
 
         </form>

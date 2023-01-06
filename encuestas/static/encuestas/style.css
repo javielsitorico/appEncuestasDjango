@@ -76,6 +76,7 @@ main {
 .titulo {
     font-size: 36px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 /* Index */
@@ -104,7 +105,6 @@ main {
 /* Detalles */
 
 .formulario {
-    margin-top: 20px;
     padding: 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 15px;
@@ -130,3 +130,64 @@ main {
 
 /* Resultados */
 
+.lista-resultados {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.contador-resultado_rosa {
+    color: var(--secundario);
+    font-weight: 800;
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.contador-resultado_negro {
+    color: var(--negro);
+    font-weight: 600;
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.resultado p {
+    color: var(--negro);
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.resultado--linea {
+    flex: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.numero-votos {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+a.votar-de-nuevo {
+    padding: 10px;
+    background-color: var(--secundario);
+    color: var(--principal);
+    font-size: 26px;
+    border: none;
+    font-weight: 800;
+    margin-top: 40px;
+}
+
+a.votar-de-nuevo:hover {
+    cursor: pointer;
+    background-color: var(--secundario-oscuro);
+}

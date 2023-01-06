@@ -22,13 +22,21 @@
     <main>
         <h1 class="titulo">{{ pregunta.textoPregunta }}</h1>
         
-        <ul>
+        <div class="lista-resultados">
         {% for eleccion in pregunta.eleccion_set.all %}
-            <li>{{ eleccion.textoEleccion }}: {{ eleccion.votos }} Voto{{ eleccion.votos|pluralize }}</li>
+            <div class="resultado">
+                {% if forloop.counter < 4 %}
+                    <p><span class="contador-resultado_rosa">{{ forloop.counter }}</span>{{ eleccion.textoEleccion }}</p>
+                {% else %}
+                    <p><span class="contador-resultado_negro">{{ forloop.counter }}</span>{{ eleccion.textoEleccion }}</p>
+                {% endif %}
+                <span class="resultado--linea"></span>
+                <span class="numero-votos">{{ eleccion.votos }} {% comment %} Voto{{ eleccion.votos|pluralize }} {% endcomment %} ✋🏼</span>
+            </div>
         {% endfor %}
-        </ul>
+        </div>
     
-        <a href="{% url 'encuestas:detalles' pregunta.id %}">Votar de nuevo</a>
+        <a class="votar-de-nuevo" href="{% url 'encuestas:detalles' pregunta.id %}">Votar de nuevo</a>
     </main>
 
 </body>
